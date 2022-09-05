@@ -8,14 +8,22 @@ const port = 3000
 app.use(morgan('combined'));
 
 //TODO Template engine
-app.engine('handlebars', handlebars());
-app.set('view engine', 'handlebars');
+app.engine('hbs', handlebars({
+  extname: '.hbs'
+}));
+app.set('view engine', 'hbs');
 
 //TODO Custom path to view
 app.set('views', path.join(__dirname, 'resources/view'))
 
+//TODO redirect to home page
 app.get('/', (req, res) => {
   res.render('home')
+})
+
+//TODO redirect to login page
+app.get('/login', (req, res) => {
+  res.render('login')
 })
 
 app.listen(port, () => {
