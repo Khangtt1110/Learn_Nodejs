@@ -29,6 +29,17 @@ app.get('/login', (req, res) => {
   res.render('login')
 })
 
+//TODO redirect to search page
+app.get('/search', (req, res) => {
+  res.render('search')
+})
+
+// TODO not found URL 
+app.get('*', (req, res) => {
+  res.render('404')
+})
+
+
 app.listen(port, () => {
   console.log('Example learn node');
 })
