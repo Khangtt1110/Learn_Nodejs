@@ -7,6 +7,9 @@ const port = 3000
 
 app.use(morgan('combined'));
 
+//TODO Config static file
+app.use(express.static(path.join(__dirname, 'public')))
+
 //TODO Template engine
 app.engine('hbs', handlebars({
   extname: '.hbs'
