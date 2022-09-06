@@ -1,17 +1,21 @@
-class SiteController{
+const User = require('../models/Users')
+
+class SiteController {
 
     //[GET] / login
-    index(req, res){
-        res.render('home')
+    index(req, res) {
+        User.find({}, async (err, users) => {
+            !err ? await res.json(users) : res.status(400).json({ err: 'ERRoR!!' })
+        })
     }
 
     //[POST] / login
-    search(req, res){
+    search(req, res) {
         res.render('search')
     }
 
     //[GET] / not found
-    notFound(req, res){
+    notFound(req, res) {
         res.render('404')
     }
 }
